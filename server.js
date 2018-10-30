@@ -1,42 +1,75 @@
-const Hapi = require('hapi');
-const next = require('next')
-
+const express = require('express');
+const next = require('next');
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({dev})
-const handle = app.getRequestHandler()
 
-const fileManager = require('./librarys/fileManager.js');
+const fileManager = require('./fileManager.js');
 
-const server = Hapi.server({
-    host: 'localhost',
-    port: 3000,
-});
-
-server.route(
-    {
-        method:'GET',
-        path:'/',
-         async handler(){
-            let data = {
-                day: fileManager.readDay(new Date())
+app.prepare()
+    .then(() => {
+        const server = express()
+        server.use(express.static('res'));
+        server.get('/', (req, res) => {
+            app.handleRequest(req, res, `/index`);
+        });
+        
+        server.get('/day', (req, res) => {
+            if(!req.params.id){
+                return res.send(JSON.stringify(fileManager.readDay(new Date())))
             }
-            app.handleRequest(req,res,'/index',data);
-        }
-    }
-)
-server.route(
-    {
-        method:'GET',
-        path:'/editor/:date',
-        async handler() {
+        });
+        server.get('/editor/:date',(req,res) =>{
+            let data={
+                day:req.params.date
+            };
+            app.handleRequest(req, res, '/editor', data);
+        });
+        server.get('*', (req, res) => {
+            return app.handleRequest(req, res)
+        });
+        server.post('/editor/:date',(req,res) =>{
+             let form = new formidable.IncomingForm();
 
-        }
-    }
-)
-server.route({
-    method: 'POST',
-    path: '/editor/:date',
-    async handler(){
+             form.parse(req);
 
-    }
-})
+             form.on('fileBegin', function (name, file) {
+                 file.path = './temp/' + file.name;
+             });
+
+             form.on('file', function (name, file) {
+                 let tempfile = './temp/' + file.name;
+                 let day = req.channelid;
+                 let daydir = `./res/img/${day}`;
+                 if (!fs.existsSync(daydir)) {
+                     fs.mkdirSync(daydir);
+                 }
+                 //eliminar archivos de la carpeta
+                 try {
+                     var files = fs.readdirSync(daydir);
+                 } catch (e) {
+                     return;
+                 }
+                 if (files.length > 0)
+                     for (var i = 0; i < files.length; i++) {
+                         var filePath = daydir + '/' + files[i];
+                         if (fs.statSync(filePath).isFile())
+                             fs.unlinkSync(filePath);
+                         else
+                             rmDir(filePath);
+                     }
+                 fs.rmdirSync(usudir);
+                 fs.unlinkSync(tempfile);
+                 res.end();
+             });
+             
+             
+        })
+        server.listen(3000, (err) => {
+            if (err) throw err
+            console.log('> Ready on http://localhost:3000')
+        })
+    })
+    .catch((ex) => {
+        console.error(ex.stack)
+        process.exit(1)
+    });

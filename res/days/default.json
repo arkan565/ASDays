@@ -1,0 +1,16 @@
+{
+    "activities":[
+        {
+            "key":1,
+            "startTime":"01:00",
+            "finishTime":"03:00",
+            "title":"hola"
+        },
+         {
+             "key": 1,
+             "startTime": "06:00",
+             "finishTime": "08:00",
+             "title": "hola"
+         }
+    ]
+}
