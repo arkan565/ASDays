@@ -5,15 +5,15 @@ export default class ActivitiesGrid extends React.Component {
          super(props);
          this.activitiesGridStyle = {
              "display": "grid",
-             "gridTemplateRows": "repeat(24, 1fr)",
-             "height":"100%"
-
+             "gridTemplateRows": "repeat(24,1fr)",
+             "height":"100%",
+             "border":"solid 1px #DADADA"
          }
      }
     renderActivities(){
         try{
             let activities=[]
-            return this.props.activities.map(activity => {
+            return this.props.activities.map((activity,index) => {
                 let splitStartDate = activity.startTime.split(':'); 
                 let startHour = parseInt(splitStartDate[0],10);
                 let startMinute = parseInt(splitStartDate[1], 10);
@@ -22,13 +22,21 @@ export default class ActivitiesGrid extends React.Component {
                 let finishMinute = parseInt(splitFinishDate[1], 10);
                 let offset=1+startHour;
                 let duration = (finishHour-startHour);
-                let style={
-                    "gridRowStart":offset,
-                    "gridRowEnd":`span ${duration}`,
-                    "backgroundColor":"black"
+                if(finishHour==0){
+                    duration =  (24- startHour)
+                }
+                let style = {
+                    "gridRowStart": offset,
+                    "gridRowEnd": `span ${duration}`,
+                    "backgroundColor": "#DCEDC8"
                 };
+                if(activity.active){
+                    style.backgroundColor = "#ffdd57";
+                }
+                
+                
                 return(
-                    <div key={activity.key} style={style}>{activity.title}</div>
+                    <div key={index} style={style}>{activity.title}</div>
                 )
             })
         }catch(ex){

@@ -2,15 +2,45 @@
     "activities":[
         {
             "key":1,
-            "startTime":"01:00",
-            "finishTime":"03:00",
-            "title":"hola"
+            "startTime":"08:00",
+            "finishTime":"14:00",
+            "title":"school",
+            "img": "https://loremflickr.com/320/420"
         },
          {
-             "key": 1,
-             "startTime": "06:00",
-             "finishTime": "08:00",
-             "title": "hola"
-         }
+             "key": 2,
+             "startTime": "15:00",
+             "finishTime": "18:00",
+             "title": "homework",
+             "img": "https://loremflickr.com/320/600"
+         },
+        {
+             "key": 3,
+             "startTime": "11:00",
+             "finishTime": "13:00",
+             "title": "math exam",
+             "img": "https://loremflickr.com/300/250"
+        },
+         {
+             "key": 4,
+             "startTime": "14:00",
+             "finishTime": "16:00",
+             "title": "rest",
+             "img": "https://loremflickr.com/400/240"
+         },
+          {
+              "key": 5,
+              "startTime": "18:00",
+              "finishTime": "22:00",
+              "title": "diner",
+              "img": "https://loremflickr.com/300/500"
+          },
+        {
+            "key": 1,
+            "startTime": "00:00",
+            "finishTime": "07:00",
+            "title": "school",
+            "img": "https://loremflickr.com/320/420"
+        }
     ]
 }

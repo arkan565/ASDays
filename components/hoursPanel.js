@@ -5,7 +5,14 @@ export default class HoursPanel extends React.Component{
         super(props);
         this.hoursPanelStyle = {
             "display": "grid",
-            "gridTemplateRows": "repeat(24, 1fr);"
+            "gridTemplateRows": "repeat(24, 1fr)"
+        }
+        this.hourDivStyle ={
+            border: "solid",
+            borderWidth:"1px 0px 1px 1px",
+            borderColor:"#DADADA",
+            textAlign: "center"
+
         }
     }
     renderHours(){
@@ -14,13 +21,14 @@ export default class HoursPanel extends React.Component{
             let date = new Date();
             date.setHours(Math.trunc(i));
             date.setMinutes(0);
-            hours.push(<div key={date}>{moment(date).format("HH:mm")}</div>)
+            hours.push(<div style={this.hourDivStyle} key={date}>{moment(date).format("HH:mm")}</div>)
         }    
         return hours;
     }
     render(){
+
         return(
-        <div className={this.hoursPanelStyle}>
+        <div style={this.hoursPanelStyle}>
             {this.renderHours()}
         </div>
         )

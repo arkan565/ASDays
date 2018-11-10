@@ -1,0 +1,14 @@
+@import './variables.scss'
+
+.dark{
+    background-color:$background-dark;
+    color:$mono-1;
+}
+.dark .success-background{
+    background:$hue-4;
+}
+.dark .background-active{
+    background:$hue-6;
+}
+
+

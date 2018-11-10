@@ -8,15 +8,15 @@ export default class LeftPanel  extends React.Component {
     }
     render() {
         return (
-            <div className="columns">
-            <div className="column is-narrow">
-                    <HoursPanel></HoursPanel>
+            <div className="columns is-gapless is-mobile">
+                <div className="column is-one-fifth">
+                        <HoursPanel></HoursPanel>
+                </div>
+                <div id="activities" className="column is-four-fifths">
+                            <ActivitiesGrid activities={this.props.activities?this.props.activities:""}></ActivitiesGrid>    
+                </div>
+                
             </div>
-             <div id="activities" 
-                            className="column">
-                        <ActivitiesGrid activities={this.props.activities?this.props.activities:""}></ActivitiesGrid>    
-            </div>
-            < /div>
         )
     }
 }

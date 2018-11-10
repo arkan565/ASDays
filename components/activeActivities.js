@@ -1,9 +1,23 @@
 import React from 'react';
+import ActiveActivitiesCard from './activeActivitiesCard';
 export default class ActiveActivities extends React.Component{
-    constructor(){
+    constructor(props){
         super(props)
     }
     render(){
-        
+        return(
+            <div>
+                <div className="columns">        
+                    {this.props.active.map((activeActivity,index)=>{
+                        return <ActiveActivitiesCard key={index} activity={activeActivity}/>
+                    })}               
+                </div>
+                <div className="columns">
+                    {this.props.next.map((activeActivity,index)=>{
+                        return <ActiveActivitiesCard key={index} activity={activeActivity}/>
+                    })}
+                </div>
+            </div>
+        )   
     }
 }

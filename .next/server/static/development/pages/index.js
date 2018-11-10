@@ -93,6 +93,223 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./components/activeActivities.js":
+/*!****************************************!*\
+  !*** ./components/activeActivities.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ActiveActivities; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _activeActivitiesCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./activeActivitiesCard */ "./components/activeActivitiesCard.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var ActiveActivities =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ActiveActivities, _React$Component);
+
+  function ActiveActivities(props) {
+    _classCallCheck(this, ActiveActivities);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ActiveActivities).call(this, props));
+  }
+
+  _createClass(ActiveActivities, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "columns"
+      }, this.props.active.map(function (activeActivity, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_activeActivitiesCard__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: index,
+          activity: activeActivity
+        });
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "columns"
+      }, this.props.next.map(function (activeActivity, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_activeActivitiesCard__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: index,
+          activity: activeActivity
+        });
+      })));
+    }
+  }]);
+
+  return ActiveActivities;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./components/activeActivitiesCard.js":
+/*!********************************************!*\
+  !*** ./components/activeActivitiesCard.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ActiveActivitiesCard; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recharts */ "recharts");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(recharts__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var ActiveActivitiesCard =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ActiveActivitiesCard, _React$Component);
+
+  function ActiveActivitiesCard(props) {
+    _classCallCheck(this, ActiveActivitiesCard);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ActiveActivitiesCard).call(this, props));
+  }
+
+  _createClass(ActiveActivitiesCard, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this = this;
+
+      this.interval = setInterval(function () {
+        return _this.setState({
+          time: Date.now()
+        });
+      }, 1000);
+    }
+  }, {
+    key: "renderChart",
+    value: function renderChart() {
+      if (this.props.activity.active) {
+        var startHourSplit = this.props.activity.startTime.split(":");
+        var startHour = parseInt(startHourSplit[0]);
+        var finishHourSplit = this.props.activity.finishTime.split(":");
+        var finishHour = parseInt(finishHourSplit[0]);
+        var duration = (finishHour - startHour) * 3600;
+        var date = new Date();
+        var data = [{
+          name: 'Passed time',
+          value: (date.getHours() - startHour) * 3600 + date.getMinutes() * 60 + date.getSeconds(),
+          fill: 'rgb(255, 221, 87)'
+        }, {
+          name: 'Remaining time',
+          value: duration - ((date.getHours() - startHour) * 3600 + date.getMinutes() * 60 + date.getSeconds()),
+          fill: 'grey'
+        }];
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_1__["ResponsiveContainer"], {
+          width: "100%",
+          height: 200
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_1__["PieChart"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_1__["Pie"], {
+          data: data,
+          startAngle: 90,
+          endAngle: -270,
+          outerRadius: "100%",
+          isAnimationActive: false,
+          dataKey: "value"
+        })));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " Start at ", this.props.activity.startTime);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var imgStyle = {
+        maxWidth: "100%",
+        maxHeight: "70vh",
+        margin: "auto",
+        width: "auto"
+      };
+      var cardStyle = {
+        maxHeight: "86vh",
+        display: "inline-block",
+        width: "100%",
+        borderRadius: "1%"
+      };
+
+      var cardStyleActive = _defineProperty({
+        maxHeight: "86vh",
+        display: "inline-block",
+        width: "100%",
+        borderRadius: "1%",
+        boxShadow: "",
+        border: "solid rgb(255, 221, 87)"
+      }, "boxShadow", "none");
+
+      var textStyle = {
+        justifyContent: "center"
+      };
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card",
+        style: this.props.activity.active ? cardStyleActive : cardStyle
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "card-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "card-header-title",
+        style: textStyle
+      }, this.props.activity.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content"
+      }, this.renderChart())));
+    }
+  }]);
+
+  return ActiveActivitiesCard;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
 /***/ "./components/activitiesGrid.js":
 /*!**************************************!*\
   !*** ./components/activitiesGrid.js ***!
@@ -138,8 +355,9 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ActivitiesGrid).call(this, props));
     _this.activitiesGridStyle = {
       "display": "grid",
-      "gridTemplateRows": "repeat(24, 1fr)",
-      "height": "100%"
+      "gridTemplateRows": "repeat(24,1fr)",
+      "height": "100%",
+      "border": "solid 1px #DADADA"
     };
     return _this;
   }
@@ -149,7 +367,7 @@ function (_React$Component) {
     value: function renderActivities() {
       try {
         var activities = [];
-        return this.props.activities.map(function (activity) {
+        return this.props.activities.map(function (activity, index) {
           var splitStartDate = activity.startTime.split(':');
           var startHour = parseInt(splitStartDate[0], 10);
           var startMinute = parseInt(splitStartDate[1], 10);
@@ -158,13 +376,23 @@ function (_React$Component) {
           var finishMinute = parseInt(splitFinishDate[1], 10);
           var offset = 1 + startHour;
           var duration = finishHour - startHour;
+
+          if (finishHour == 0) {
+            duration = 24 - startHour;
+          }
+
           var style = {
             "gridRowStart": offset,
             "gridRowEnd": "span ".concat(duration),
-            "backgroundColor": "black"
+            "backgroundColor": "#DCEDC8"
           };
+
+          if (activity.active) {
+            style.backgroundColor = "#ffdd57";
+          }
+
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            key: activity.key,
+            key: index,
             style: style
           }, activity.title);
         });
@@ -235,7 +463,13 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(HoursPanel).call(this, props));
     _this.hoursPanelStyle = {
       "display": "grid",
-      "gridTemplateRows": "repeat(24, 1fr);"
+      "gridTemplateRows": "repeat(24, 1fr)"
+    };
+    _this.hourDivStyle = {
+      border: "solid",
+      borderWidth: "1px 0px 1px 1px",
+      borderColor: "#DADADA",
+      textAlign: "center"
     };
     return _this;
   }
@@ -250,6 +484,7 @@ function (_React$Component) {
         date.setHours(Math.trunc(i));
         date.setMinutes(0);
         hours.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          style: this.hourDivStyle,
           key: date
         }, moment(date).format("HH:mm")));
       }
@@ -260,7 +495,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: this.hoursPanelStyle
+        style: this.hoursPanelStyle
       }, this.renderHours());
     }
   }]);
@@ -326,12 +561,12 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "columns"
+        className: "columns is-gapless is-mobile"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "column is-narrow"
+        className: "column is-one-fifth"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_hoursPanel__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "activities",
-        className: "column"
+        className: "column is-four-fifths"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_activitiesGrid__WEBPACK_IMPORTED_MODULE_3__["default"], {
         activities: this.props.activities ? this.props.activities : ""
       })));
@@ -373,8 +608,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bulma/css/bulma.css */ "./node_modules/bulma/css/bulma.css");
 /* harmony import */ var bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_leftPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/leftPanel */ "./components/leftPanel.js");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_activeActivities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/activeActivities */ "./components/activeActivities.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_5__);
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -385,19 +621,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -409,67 +646,7 @@ var Index =
 function (_React$Component) {
   _inherits(Index, _React$Component);
 
-  function Index(props) {
-    var _this;
-
-    _classCallCheck(this, Index);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Index).call(this, props));
-    _this.nextActivities = [];
-    _this.day = {};
-    return _this;
-  }
-
-  _createClass(Index, [{
-    key: "setActive",
-    value: function setActive() {
-      var date = new Date();
-      var stringDate = "".concat(date.setHours(), ":").concat(date.setMinutes());
-
-      for (var i = 0; i < this.props.activities.length; i++) {
-        activity = this.props.activities.length[i];
-
-        if (activity.startTime > stringDate && (activity.finishTime < stringDate || activity.finishTime === "00:00")) {
-          activity.active = true;
-        }
-      }
-
-      this.props.json.activities.forEach(function (activity) {
-        if (activity.startTime > stringDate && (activity.finishTime < stringDate || activity.finishTime === "00:00")) {
-          activity.active = true;
-        }
-      });
-    }
-  }, {
-    key: "renderHours",
-    value: function renderHours() {
-      var hours = [];
-
-      for (var i = 0; i < 24; i++) {
-        var date = new Date();
-        date.setHours(Math.trunc(i));
-        date.setMinutes(0);
-        hours.push(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, moment(date).format("HH:mm")));
-      }
-
-      return hours;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "columns"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "column is-one-third"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_leftPanel__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        activities: this.props.day.activities ? this.props.day.activities : ""
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "column is-three-quarters"
-      })));
-    }
-  }], [{
+  _createClass(Index, null, [{
     key: "getInitialProps",
     value: function () {
       var _getInitialProps = _asyncToGenerator(
@@ -481,7 +658,7 @@ function (_React$Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default()('http://localhost:3000/day');
+                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_5___default()("http://localhost:3000/day");
 
               case 2:
                 res = _context.sent;
@@ -508,8 +685,181 @@ function (_React$Component) {
     }()
   }]);
 
+  function Index(props) {
+    var _this;
+
+    _classCallCheck(this, Index);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Index).call(this, props));
+    _this.nextActivities = [];
+    _this.active = [];
+    _this.day = {};
+    _this.timeout = null;
+    return _this;
+  }
+
+  _createClass(Index, [{
+    key: "orderActivities",
+    value: function orderActivities(day) {
+      var activities = [];
+      var length = day.activities.length;
+
+      for (var i = 0; i < length; i++) {
+        var minI = 0;
+        var minStartTime = day.activities[0].startTime;
+        var minFinishTime = day.activities[0].finishTime;
+
+        for (var j = 1; j < day.activities.length; j++) {
+          if (day.activities[j].startTime < minStartTime) {
+            minI = j;
+            minStartTime = day.activities[j].startTime;
+            minFinishTime = day.activities[j].finishTime;
+          } else if (day.activities[j].startTime == minStartTime && day.activities[j].finishTime < minFinishTime) {
+            minI = j;
+            minStartTime = day.activities[j].startTime;
+            minFinishTime = day.activities[j].finishTime;
+          }
+        }
+
+        activities.push(day.activities[minI]);
+        day.activities.splice(minI, 1);
+      }
+
+      return activities;
+    }
+  }, {
+    key: "setActive",
+    value: function setActive() {
+      var date = new Date();
+      this.props.day.activities.forEach(function (activity) {
+        var splitStartDate = activity.startTime.split(':');
+        var startHour = parseInt(splitStartDate[0], 10);
+        var splitFinishDate = activity.finishTime.split(':');
+        var finishHour = parseInt(splitFinishDate[0], 10);
+        activity.active = startHour <= date.getHours() && (finishHour > date.getHours() || activity.finishTime === "00:00"); //set if active is good or bad
+      });
+      this.active = this.props.day.activities.filter(function (activity) {
+        return activity.active == true;
+      });
+    }
+  }, {
+    key: "getNext",
+    value: function getNext(activities) {
+      var next = [];
+      var date = new Date();
+      activities.map(function (activity) {
+        var splitStartDate = activity.startTime.split(':');
+        var startHour = parseInt(splitStartDate[0], 10);
+
+        if (startHour > date.getHours() && next.length < 3) {
+          next.push(activity);
+        }
+      });
+      this.nextActivities = next;
+    }
+  }, {
+    key: "setTimeout",
+    value: function (_setTimeout) {
+      function setTimeout() {
+        return _setTimeout.apply(this, arguments);
+      }
+
+      setTimeout.toString = function () {
+        return _setTimeout.toString();
+      };
+
+      return setTimeout;
+    }(function () {
+      var _this2 = this;
+
+      var minTime = -1;
+      var date = new Date();
+
+      for (var i = 0; i < this.active.length; i++) {
+        var activity = this.active[i];
+        var splitFinishDate = activity.finishTime.split(':');
+        var finishHour = parseInt(splitFinishDate[0], 10);
+        var finishMinutes = parseInt(splitFinishDate[1], 10);
+        var secondsLeft = 60 - date.getSeconds() + 1;
+        var minutes = finishMinutes != 0 ? finishMinutes - date.getMinutes() - 1 : 60 - date.getMinutes() - 1;
+        var hours = finishHour != 0 ? finishHour - date.getHours() - 1 : 24 - date.getHours() - 1;
+        var timeleft = 3600 * 1000 * hours + 60 * 1000 * minutes + secondsLeft * 1000;
+
+        if (minTime == -1 || timeleft < minTime) {
+          minTime = timeleft;
+        }
+      }
+
+      for (var _i = 0; _i < this.nextActivities.length; _i++) {
+        var _activity = this.nextActivities[_i];
+
+        var splitStartDate = _activity.startTime.split(':');
+
+        var startHour = parseInt(splitStartDate[0], 10);
+        var startMinute = parseInt(splitStartDate[1], 10);
+
+        var _secondsLeft = 60 - date.getSeconds() + 1;
+
+        var _minutes = startMinute != 0 ? startMinute - date.getMinutes() - 1 : 60 - date.getMinutes() - 1;
+
+        var _hours = startHour != 0 ? startHour - date.getHours() - 1 : 24 - date.getHours() - 1;
+
+        var _timeleft = 3600 * 1000 * _hours + 60 * 1000 * _minutes + _secondsLeft * 1000;
+
+        if (minTime == -1 || _timeleft < minTime) {
+          minTime = _timeleft;
+        }
+      }
+
+      try {
+        clearTimeout(this.timeout);
+      } catch (ex) {}
+
+      if (minTime != -1) {
+        this.timeout = setTimeout(function () {
+          return _this2.setState({
+            time: Date.now()
+          });
+        }, minTime);
+      }
+
+      console.log(minTime);
+    })
+  }, {
+    key: "render",
+    value: function render() {
+      this.props.day.activities = this.orderActivities(this.props.day);
+      this.setActive();
+      this.getNext(this.props.day.activities);
+      this.setTimeout();
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        style: {
+          marginBottom: "5vh",
+          textAlign: "center"
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", {
+        className: "title is-1"
+      }, "Schedule")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "columns"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "column is-one-third"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_leftPanel__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        activities: this.props.day.activities ? this.props.day.activities : ""
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "column is-two-thirds"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_activeActivities__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        active: this.active,
+        next: this.nextActivities
+      }))));
+    }
+  }]);
+
   return Index;
-}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component); //<LeftPanel activities={this.props.day.activities?this.props.day.activities:""}></LeftPanel>
+//                        <ActiveActivities active={this.active} next={this.nextActivities}></ActiveActivities>
+
 
 
 
@@ -568,6 +918,17 @@ module.exports = require("moment");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "recharts":
+/*!***************************!*\
+  !*** external "recharts" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("recharts");
 
 /***/ })
 
