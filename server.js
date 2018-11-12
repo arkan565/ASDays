@@ -3,7 +3,8 @@ const next = require('next');
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({dev})
 const fileManager = require('./fileManager.js');
-
+let date = new Date();
+console.log(`${date.getFullYear()}-${date.getMonth()}-${date.getDate()}.json`)
 app.prepare()
     .then(() => {
         const server = express()

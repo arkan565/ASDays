@@ -5,7 +5,8 @@ export default class HoursPanel extends React.Component{
         super(props);
         this.hoursPanelStyle = {
             "display": "grid",
-            "gridTemplateRows": "repeat(24, 1fr)"
+            "gridTemplateRows": "repeat(24, 1fr)",
+            "height":"100%"
         }
         this.hourDivStyle ={
             border: "solid",

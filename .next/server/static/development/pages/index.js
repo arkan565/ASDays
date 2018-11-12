@@ -106,6 +106,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _activeActivitiesCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./activeActivitiesCard */ "./components/activeActivitiesCard.js");
+/* harmony import */ var bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bulma/css/bulma.css */ "./node_modules/bulma/css/bulma.css");
+/* harmony import */ var bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -123,6 +125,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -178,8 +181,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ActiveActivitiesCard; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recharts */ "recharts");
-/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(recharts__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bulma/css/bulma.css */ "./node_modules/bulma/css/bulma.css");
+/* harmony import */ var bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recharts */ "recharts");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(recharts__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -199,6 +204,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -231,23 +237,26 @@ function (_React$Component) {
       if (this.props.activity.active) {
         var startHourSplit = this.props.activity.startTime.split(":");
         var startHour = parseInt(startHourSplit[0]);
+        var startMinutes = parseInt(startHourSplit[1]);
         var finishHourSplit = this.props.activity.finishTime.split(":");
         var finishHour = parseInt(finishHourSplit[0]);
-        var duration = (finishHour - startHour) * 3600;
+        var finishMinutes = parseInt(finishHourSplit[1]);
+        var duration = (finishHour - startHour) * 3600 + (finishMinutes - startMinutes) * 60;
         var date = new Date();
         var data = [{
           name: 'Passed time',
-          value: (date.getHours() - startHour) * 3600 + date.getMinutes() * 60 + date.getSeconds(),
+          value: (date.getHours() - startHour) * 3600 + (date.getMinutes() - startMinutes) * 60 + date.getSeconds(),
           fill: 'rgb(255, 221, 87)'
         }, {
           name: 'Remaining time',
-          value: duration - ((date.getHours() - startHour) * 3600 + date.getMinutes() * 60 + date.getSeconds()),
+          value: duration - ((date.getHours() - startHour) * 3600 + (date.getMinutes() - startMinutes) * 60 + date.getSeconds()),
           fill: 'grey'
         }];
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_1__["ResponsiveContainer"], {
-          width: "100%",
-          height: 200
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_1__["PieChart"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_1__["Pie"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_2__["ResponsiveContainer"], {
+          width: "99%",
+          aspect: 3,
+          maxHeight: "100%"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_2__["PieChart"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_2__["Pie"], {
           data: data,
           startAngle: 90,
           endAngle: -270,
@@ -272,11 +281,13 @@ function (_React$Component) {
         maxHeight: "86vh",
         display: "inline-block",
         width: "100%",
-        borderRadius: "1%"
+        borderRadius: "1%",
+        minWidth: "0"
       };
 
       var cardStyleActive = _defineProperty({
         maxHeight: "86vh",
+        height: "100%",
         display: "inline-block",
         width: "100%",
         borderRadius: "1%",
@@ -287,18 +298,27 @@ function (_React$Component) {
       var textStyle = {
         justifyContent: "center"
       };
+      var content = {
+        width: "100%",
+        height: "100%",
+        minWidth: "0"
+      };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "column"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card",
         style: this.props.activity.active ? cardStyleActive : cardStyle
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
-        className: "card-content"
+        className: "card-content",
+        style: {
+          minWidth: 0
+        }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "card-header-title",
         style: textStyle
       }, this.props.activity.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "content"
+        className: "card-content",
+        style: content
       }, this.renderChart())));
     }
   }]);
@@ -377,6 +397,10 @@ function (_React$Component) {
           var offset = 1 + startHour;
           var duration = finishHour - startHour;
 
+          if (finishMinute > 0) {
+            duration = duration + 1;
+          }
+
           if (finishHour == 0) {
             duration = 24 - startHour;
           }
@@ -394,7 +418,7 @@ function (_React$Component) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: index,
             style: style
-          }, activity.title);
+          }, "".concat(activity.title, " ").concat(activity.startTime, "-").concat(activity.finishTime));
         });
       } catch (ex) {
         return "";
@@ -463,7 +487,8 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(HoursPanel).call(this, props));
     _this.hoursPanelStyle = {
       "display": "grid",
-      "gridTemplateRows": "repeat(24, 1fr)"
+      "gridTemplateRows": "repeat(24, 1fr)",
+      "height": "100%"
     };
     _this.hourDivStyle = {
       border: "solid",
@@ -734,9 +759,16 @@ function (_React$Component) {
       this.props.day.activities.forEach(function (activity) {
         var splitStartDate = activity.startTime.split(':');
         var startHour = parseInt(splitStartDate[0], 10);
+        var startMinute = parseInt(splitStartDate[1], 10);
         var splitFinishDate = activity.finishTime.split(':');
         var finishHour = parseInt(splitFinishDate[0], 10);
-        activity.active = startHour <= date.getHours() && (finishHour > date.getHours() || activity.finishTime === "00:00"); //set if active is good or bad
+        var finishMinute = parseInt(splitFinishDate[1], 10);
+
+        if (startHour < date.getHours() || startHour == date.getHours() && startMinute <= date.getMinutes()) {
+          activity.active = finishHour > date.getHours() || activity.finishTime === "00:00" || finishHour == date.getHours() && finishMinute > date.getMinutes(); //set if active is good or bad
+        } else {
+          activity.active = false;
+        }
       });
       this.active = this.props.day.activities.filter(function (activity) {
         return activity.active == true;
@@ -751,7 +783,7 @@ function (_React$Component) {
         var splitStartDate = activity.startTime.split(':');
         var startHour = parseInt(splitStartDate[0], 10);
 
-        if (startHour > date.getHours() && next.length < 3) {
+        if (startHour >= date.getHours() && !activity.active && next.length < 3) {
           next.push(activity);
         }
       });
@@ -783,6 +815,15 @@ function (_React$Component) {
         var secondsLeft = 60 - date.getSeconds() + 1;
         var minutes = finishMinutes != 0 ? finishMinutes - date.getMinutes() - 1 : 60 - date.getMinutes() - 1;
         var hours = finishHour != 0 ? finishHour - date.getHours() - 1 : 24 - date.getHours() - 1;
+
+        if (hours < 0) {
+          hours = 0;
+        }
+
+        if (minutes < 0) {
+          minutes = 0;
+        }
+
         var timeleft = 3600 * 1000 * hours + 60 * 1000 * minutes + secondsLeft * 1000;
 
         if (minTime == -1 || timeleft < minTime) {
@@ -804,6 +845,14 @@ function (_React$Component) {
 
         var _hours = startHour != 0 ? startHour - date.getHours() - 1 : 24 - date.getHours() - 1;
 
+        if (_hours < 0) {
+          _hours = 0;
+        }
+
+        if (_minutes < 0) {
+          _minutes = 0;
+        }
+
         var _timeleft = 3600 * 1000 * _hours + 60 * 1000 * _minutes + _secondsLeft * 1000;
 
         if (minTime == -1 || _timeleft < minTime) {
@@ -822,8 +871,6 @@ function (_React$Component) {
           });
         }, minTime);
       }
-
-      console.log(minTime);
     })
   }, {
     key: "render",

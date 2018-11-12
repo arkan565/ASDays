@@ -22,6 +22,10 @@ export default class ActivitiesGrid extends React.Component {
                 let finishMinute = parseInt(splitFinishDate[1], 10);
                 let offset=1+startHour;
                 let duration = (finishHour-startHour);
+
+                if(finishMinute>0){
+                    duration=duration+1;
+                }
                 if(finishHour==0){
                     duration =  (24- startHour)
                 }
@@ -36,7 +40,7 @@ export default class ActivitiesGrid extends React.Component {
                 
                 
                 return(
-                    <div key={index} style={style}>{activity.title}</div>
+                    <div key={index} style={style}>{`${activity.title} ${activity.startTime}-${activity.finishTime}`}</div>
                 )
             })
         }catch(ex){

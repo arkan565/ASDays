@@ -1,5 +1,6 @@
 import React from 'react';
 import ActiveActivitiesCard from './activeActivitiesCard';
+import 'bulma/css/bulma.css';
 export default class ActiveActivities extends React.Component{
     constructor(props){
         super(props)

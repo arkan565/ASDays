@@ -48,9 +48,15 @@ export default class Index extends React.Component{
         this.props.day.activities.forEach(activity => {
             let splitStartDate = activity.startTime.split(':');
             let startHour = parseInt(splitStartDate[0], 10);
+            let startMinute = parseInt(splitStartDate[1], 10);
             let splitFinishDate = activity.finishTime.split(':');
             let finishHour = parseInt(splitFinishDate[0], 10);
-            activity.active = (startHour <= date.getHours() && (finishHour > date.getHours() || activity.finishTime === "00:00")); //set if active is good or bad
+            let finishMinute = parseInt(splitFinishDate[1], 10);
+            if ((startHour < date.getHours()) || (startHour == date.getHours() && startMinute <= date.getMinutes())){
+                activity.active =(finishHour > date.getHours() || activity.finishTime === "00:00" || (finishHour==date.getHours() && finishMinute>date.getMinutes())); //set if active is good or bad
+            }else{
+                activity.active=false;
+            }
         });
         this.active = this.props.day.activities.filter(activity => activity.active == true);
     }
@@ -60,7 +66,7 @@ export default class Index extends React.Component{
         activities.map((activity)=>{
             let splitStartDate = activity.startTime.split(':');
             let startHour = parseInt(splitStartDate[0], 10);
-            if(startHour>date.getHours() && next.length<3){
+            if(startHour>=date.getHours() && !activity.active && next.length<3){
                 next.push(activity)
             }
         })
@@ -77,7 +83,13 @@ export default class Index extends React.Component{
             let secondsLeft= 60-date.getSeconds()+1;
             let minutes = (finishMinutes != 0 ? finishMinutes - date.getMinutes()-1 : 60 - date.getMinutes()-1);
             let hours = (finishHour!=0?finishHour-date.getHours()-1:24-date.getHours()-1);
-            let timeleft = 3600*1000*hours+60*1000*minutes+secondsLeft*1000;
+            if(hours<0){
+                hours=0;
+            }
+            if(minutes<0){
+                minutes=0;  
+            }
+            let timeleft = (3600*1000*hours)+(60*1000*minutes)+(secondsLeft*1000);
             if(minTime==-1 || timeleft<minTime){
                 minTime=timeleft;
             }
@@ -90,7 +102,13 @@ export default class Index extends React.Component{
             let secondsLeft = 60 - date.getSeconds() + 1;
             let minutes = (startMinute != 0 ? startMinute - date.getMinutes() - 1 : 60 - date.getMinutes() - 1);
             let hours = (startHour != 0 ? startHour - date.getHours() - 1 : 24 - date.getHours() - 1);
-            let timeleft = 3600 * 1000 * hours + 60 * 1000 * minutes + secondsLeft * 1000;
+            if (hours < 0) {
+                hours = 0;
+            }
+            if (minutes < 0) {
+                minutes = 0;
+            }
+            let timeleft = (3600 * 1000 * hours) + (60 * 1000 * minutes) + (secondsLeft * 1000);
             if (minTime == -1 || timeleft < minTime) {
                 minTime = timeleft;
             }
@@ -105,7 +123,6 @@ export default class Index extends React.Component{
                 time: Date.now()
             }), minTime);
         }
-        console.log(minTime)
     }
 
     render(){
