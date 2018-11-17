@@ -21,6 +21,20 @@
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": 5,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    }
+  ],
+  "bulma-calendar/dist/css/bulma-calendar.min.css": [
+    {
+      "id": "./node_modules/bulma-calendar/dist/css/bulma-calendar.min.css",
+      "name": "./node_modules/bulma-calendar/dist/css/bulma-calendar.min.css",
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
     }
   ]
 }
