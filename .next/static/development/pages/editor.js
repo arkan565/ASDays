@@ -144,6 +144,7 @@ function (_React$Component) {
       date: ""
     };
     _this.type = "";
+    _this.message = [];
     _this.date = "default";
     _this.activities = [];
     _this.edit = false;
@@ -203,6 +204,8 @@ function (_React$Component) {
   }, {
     key: "save",
     value: function save() {
+      var _this2 = this;
+
       isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default()("http://localhost:3000/editor/".concat(this.date), {
         method: 'POST',
         headers: {
@@ -213,6 +216,26 @@ function (_React$Component) {
           activities: this.activities,
           date: this.date
         })
+      }).then(function (res) {
+        res.json().then(function (res) {
+          console.log(res.message);
+
+          _this2.message.splice(0, 0, res.message);
+
+          console.log(_this2.message);
+
+          _this2.setState({
+            date: new Date()
+          });
+
+          setTimeout(function () {
+            _this2.message.pop();
+
+            _this2.setState({
+              date: new Date()
+            });
+          }, 2000);
+        });
       });
     }
   }, {
@@ -241,15 +264,15 @@ function (_React$Component) {
   }, {
     key: "fetchDate",
     value: function fetchDate() {
-      var _this2 = this;
+      var _this3 = this;
 
       isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default()("http://localhost:3000/editor/".concat(this.date)).then(function (res) {
         res.json().then(function (res) {
-          _this2.activities = res.activities;
-          _this2.edit = true;
+          _this3.activities = res.activities;
+          _this3.edit = true;
 
-          _this2.setState({
-            date: _this2.date
+          _this3.setState({
+            date: _this3.date
           });
         });
       });
@@ -313,10 +336,25 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var switchRender = this.typeSwitch();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          position: "absolute",
+          right: "0",
+          display: "inline-block",
+          maxWidth: "50%"
+        }
+      }, this.message.map(function (message, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: index,
+          style: {
+            zIndex: "100"
+          },
+          className: "notification is-primary"
+        }, message);
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "select"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "select is-info",
@@ -351,7 +389,7 @@ function (_React$Component) {
           type: "text",
           value: activity.title,
           onChange: function onChange(e) {
-            return _this3.changeTitle(index, e);
+            return _this4.changeTitle(index, e);
           }
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "start time:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           style: {
@@ -365,7 +403,7 @@ function (_React$Component) {
           name: "startHour",
           value: splitStartDate[0],
           onChange: function onChange(e) {
-            return _this3.changeTime(index, e);
+            return _this4.changeTime(index, e);
           }
         })), ":", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           style: {
@@ -380,7 +418,7 @@ function (_React$Component) {
           name: "startMinute",
           value: splitStartDate[1],
           onChange: function onChange(e) {
-            return _this3.changeTime(index, e);
+            return _this4.changeTime(index, e);
           }
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "finish time:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           style: {
@@ -394,7 +432,7 @@ function (_React$Component) {
           name: "finishHour",
           value: splitFinishDate[0],
           onChange: function onChange(e) {
-            return _this3.changeTime(index, e);
+            return _this4.changeTime(index, e);
           }
         })), ":", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           style: {
@@ -409,13 +447,13 @@ function (_React$Component) {
           name: "finishMinute",
           value: splitFinishDate[1],
           onChange: function onChange(e) {
-            return _this3.changeTime(index, e);
+            return _this4.changeTime(index, e);
           }
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: function onClick(index) {
-            _this3.activities.splice(index, 1);
+            _this4.activities.splice(index, 1);
 
-            _this3.setState({
+            _this4.setState({
               date: new Date()
             });
           },

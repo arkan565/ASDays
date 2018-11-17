@@ -10,6 +10,7 @@ export default class Editor extends React.Component {
         super(props);
         this.state = {date:""}
         this.type="";
+        this.message=[];
         this.date="default";
         this.activities=[];
         this.edit=false;
@@ -59,6 +60,22 @@ export default class Editor extends React.Component {
                 activities:this.activities,
                 date:this.date
             })
+        }).then(res=>{
+            res.json().then(
+                res=>{
+                    console.log(res.message);
+                    
+                    this.message.splice(0, 0,res.message);
+                    console.log(this.message)
+                    this.setState({date:new Date()})
+                    setTimeout(()=>{
+                        this.message.pop();
+                        this.setState({
+                            date: new Date()
+                        })
+                    },2000)
+                }
+            )
         })
     }
   
@@ -137,6 +154,16 @@ export default class Editor extends React.Component {
         var switchRender = this.typeSwitch();
         return(
             <div>
+                <div style={{position:"absolute",right:"0",display:"inline-block",maxWidth:"50%"}}>
+                   {this.message.map((message,index)=>{
+                        return(
+                            <div key={index} style={{zIndex:"100"}} className="notification is-primary">
+                                {message}
+                            </div>
+                        )
+                   })}
+                   
+                </div>
                 <div className="select">
                     <select className="select is-info" name="type" id="type" onChange={this.changeType}>
                         <option value="default">Default</option>

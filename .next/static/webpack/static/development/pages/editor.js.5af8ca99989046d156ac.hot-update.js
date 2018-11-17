@@ -1,119 +1,4 @@
-module.exports =
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = require('../../../ssr-module-cache.js');
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		var threw = true;
-/******/ 		try {
-/******/ 			modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 			threw = false;
-/******/ 		} finally {
-/******/ 			if(threw) delete installedModules[moduleId];
-/******/ 		}
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
-/******/ })
-/************************************************************************/
-/******/ ({
-
-/***/ "./node_modules/bulma-calendar/dist/css/bulma-calendar.min.css":
-/*!*********************************************************************!*\
-  !*** ./node_modules/bulma-calendar/dist/css/bulma-calendar.min.css ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "./node_modules/bulma/css/bulma.css":
-/*!******************************************!*\
-  !*** ./node_modules/bulma/css/bulma.css ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
+webpackHotUpdate("static\\development\\pages\\editor.js",{
 
 /***/ "./pages/editor.js":
 /*!*************************!*\
@@ -124,16 +9,16 @@ module.exports =
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Editor; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Editor; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var bulma_calendar_dist_js_bulma_calendar_min_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bulma-calendar/dist/js/bulma-calendar.min.js */ "bulma-calendar/dist/js/bulma-calendar.min.js");
+/* harmony import */ var bulma_calendar_dist_js_bulma_calendar_min_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bulma-calendar/dist/js/bulma-calendar.min.js */ "./node_modules/bulma-calendar/dist/js/bulma-calendar.min.js");
 /* harmony import */ var bulma_calendar_dist_js_bulma_calendar_min_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(bulma_calendar_dist_js_bulma_calendar_min_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bulma/css/bulma.css */ "./node_modules/bulma/css/bulma.css");
 /* harmony import */ var bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var bulma_calendar_dist_css_bulma_calendar_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bulma-calendar/dist/css/bulma-calendar.min.css */ "./node_modules/bulma-calendar/dist/css/bulma-calendar.min.css");
 /* harmony import */ var bulma_calendar_dist_css_bulma_calendar_min_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(bulma_calendar_dist_css_bulma_calendar_min_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/isomorphic-unfetch/browser.js");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -175,7 +60,7 @@ function (_React$Component) {
       date: ""
     };
     _this.type = "";
-    _this.message = [];
+    _this.message = "";
     _this.date = "default";
     _this.activities = [];
     _this.edit = false;
@@ -235,8 +120,6 @@ function (_React$Component) {
   }, {
     key: "save",
     value: function save() {
-      var _this2 = this;
-
       isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default()("http://localhost:3000/editor/".concat(this.date), {
         method: 'POST',
         headers: {
@@ -247,26 +130,6 @@ function (_React$Component) {
           activities: this.activities,
           date: this.date
         })
-      }).then(function (res) {
-        res.json().then(function (res) {
-          console.log(res.message);
-
-          _this2.message.splice(0, 0, res.message);
-
-          console.log(_this2.message);
-
-          _this2.setState({
-            date: new Date()
-          });
-
-          setTimeout(function () {
-            _this2.message.pop();
-
-            _this2.setState({
-              date: new Date()
-            });
-          }, 2000);
-        });
       });
     }
   }, {
@@ -295,15 +158,15 @@ function (_React$Component) {
   }, {
     key: "fetchDate",
     value: function fetchDate() {
-      var _this3 = this;
+      var _this2 = this;
 
       isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default()("http://localhost:3000/editor/".concat(this.date)).then(function (res) {
         res.json().then(function (res) {
-          _this3.activities = res.activities;
-          _this3.edit = true;
+          _this2.activities = res.activities;
+          _this2.edit = true;
 
-          _this3.setState({
-            date: _this3.date
+          _this2.setState({
+            date: _this2.date
           });
         });
       });
@@ -367,25 +230,20 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this3 = this;
 
       var switchRender = this.typeSwitch();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
           position: "absolute",
           right: "0",
-          display: "inline-block",
-          maxWidth: "50%"
+          display: "inline-block"
         }
-      }, this.message.map(function (message, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: index,
-          style: {
-            zIndex: "100"
-          },
-          className: "notification is-primary"
-        }, message);
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        class: "notification is-primary"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        class: "delete"
+      }), "Primar lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Pellentesque risus mi"), ", tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "felis venenatis"), " efficitur. Sit amet, consectetur adipiscing elit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "select"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "select is-info",
@@ -420,7 +278,7 @@ function (_React$Component) {
           type: "text",
           value: activity.title,
           onChange: function onChange(e) {
-            return _this4.changeTitle(index, e);
+            return _this3.changeTitle(index, e);
           }
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "start time:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           style: {
@@ -434,7 +292,7 @@ function (_React$Component) {
           name: "startHour",
           value: splitStartDate[0],
           onChange: function onChange(e) {
-            return _this4.changeTime(index, e);
+            return _this3.changeTime(index, e);
           }
         })), ":", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           style: {
@@ -449,7 +307,7 @@ function (_React$Component) {
           name: "startMinute",
           value: splitStartDate[1],
           onChange: function onChange(e) {
-            return _this4.changeTime(index, e);
+            return _this3.changeTime(index, e);
           }
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "finish time:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           style: {
@@ -463,7 +321,7 @@ function (_React$Component) {
           name: "finishHour",
           value: splitFinishDate[0],
           onChange: function onChange(e) {
-            return _this4.changeTime(index, e);
+            return _this3.changeTime(index, e);
           }
         })), ":", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           style: {
@@ -478,13 +336,13 @@ function (_React$Component) {
           name: "finishMinute",
           value: splitFinishDate[1],
           onChange: function onChange(e) {
-            return _this4.changeTime(index, e);
+            return _this3.changeTime(index, e);
           }
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: function onClick(index) {
-            _this4.activities.splice(index, 1);
+            _this3.activities.splice(index, 1);
 
-            _this4.setState({
+            _this3.setState({
               date: new Date()
             });
           },
@@ -504,53 +362,27 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
+    (function (Component, route) {
+      if(!Component) return
+      if (false) {}
+      module.hot.accept()
+      Component.__route = route
 
-/***/ }),
+      if (module.hot.status() === 'idle') return
 
-/***/ 3:
-/*!*******************************!*\
-  !*** multi ./pages/editor.js ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+      var components = next.router.components
+      for (var r in components) {
+        if (!components.hasOwnProperty(r)) continue
 
-module.exports = __webpack_require__(/*! ./pages/editor.js */"./pages/editor.js");
-
-
-/***/ }),
-
-/***/ "bulma-calendar/dist/js/bulma-calendar.min.js":
-/*!***************************************************************!*\
-  !*** external "bulma-calendar/dist/js/bulma-calendar.min.js" ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("bulma-calendar/dist/js/bulma-calendar.min.js");
-
-/***/ }),
-
-/***/ "isomorphic-unfetch":
-/*!*************************************!*\
-  !*** external "isomorphic-unfetch" ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("isomorphic-unfetch");
-
-/***/ }),
-
-/***/ "react":
-/*!************************!*\
-  !*** external "react" ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react");
+        if (components[r].Component.__route === route) {
+          next.router.update(r, Component)
+        }
+      }
+    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/editor")
+  
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
 
 /***/ })
 
-/******/ });
-//# sourceMappingURL=editor.js.map
+})
+//# sourceMappingURL=editor.js.5af8ca99989046d156ac.hot-update.js.map
