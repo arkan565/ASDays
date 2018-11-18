@@ -28,7 +28,9 @@ export default class Editor extends React.Component {
     typeSwitch(){
         switch(this.type){
             case "weekDay":
-                this.date=weekDays[0];
+                if(weekDays.filter(day=>day==this.date).length<=0){
+                    this.date=weekDays[0];
+                }
                 return(
                     <div className="select">
                         <select name="type" id="type" onChange={this.changeDate}>
@@ -63,10 +65,7 @@ export default class Editor extends React.Component {
         }).then(res=>{
             res.json().then(
                 res=>{
-                    console.log(res.message);
-                    
                     this.message.splice(0, 0,res.message);
-                    console.log(this.message)
                     this.setState({date:new Date()})
                     setTimeout(()=>{
                         this.message.pop();
@@ -116,7 +115,6 @@ export default class Editor extends React.Component {
     }
     changeTime(index,event){
         let splitDate;
-        console.log(event.target.attributes["name"])
         switch(event.target.attributes["name"].value){
             case "startHour":
                 splitDate = this.activities[index].startTime.split(":")
