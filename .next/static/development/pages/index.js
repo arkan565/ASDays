@@ -316,7 +316,13 @@ function (_React$Component) {
           var style = {
             "gridRowStart": offset - _this2.props.config.startTime.value,
             "gridRowEnd": "span ".concat(duration),
-            "backgroundColor": "#DCEDC8"
+            "backgroundColor": "#DCEDC8",
+            "borderBottom": "2px",
+            "borderTop": "0",
+            "borderLeft": "0",
+            "borderRight": "0",
+            "borderStyle": "solid",
+            "borderColor": "white"
           };
 
           if (activity.active) {
@@ -64731,6 +64737,10 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Index).call(this, props));
     _this.nextActivities = [];
+    _this.state = {
+      width: 0,
+      height: 0
+    };
     _this.active = [];
     _this.day = {};
     _this.config = {};
@@ -64739,6 +64749,18 @@ function (_React$Component) {
   }
 
   _createClass(Index, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      window.addEventListener('resize', function () {
+        _this2.setState({
+          width: window.innerWidth,
+          height: window.innerHeight
+        });
+      });
+    }
+  }, {
     key: "orderActivities",
     value: function orderActivities(day) {
       var activities = [];
@@ -64817,7 +64839,7 @@ function (_React$Component) {
 
       return setTimeout;
     }(function () {
-      var _this2 = this;
+      var _this3 = this;
 
       var minTime = -1;
       var date = new Date();
@@ -64881,7 +64903,7 @@ function (_React$Component) {
 
       if (minTime != -1) {
         this.timeout = setTimeout(function () {
-          return _this2.setState({
+          return _this3.setState({
             time: Date.now()
           });
         }, minTime);
@@ -64912,17 +64934,20 @@ function (_React$Component) {
         activities: this.props.day.activities ? this.props.day.activities : ""
       })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "column is-two-thirds"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        style: this.state.width > 800 ? {
+          position: "fixed",
+          width: "60vw"
+        } : {}
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_activeActivities__WEBPACK_IMPORTED_MODULE_4__["default"], {
         active: this.active,
         next: this.nextActivities
-      }))));
+      })))));
     }
   }]);
 
   return Index;
-}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component); //<LeftPanel activities={this.props.day.activities?this.props.day.activities:""}></LeftPanel>
-//                        <ActiveActivities active={this.active} next={this.nextActivities}></ActiveActivities>
-
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
 
 
     (function (Component, route) {
@@ -64947,7 +64972,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -64972,5 +64997,5 @@ module.exports = dll_10edf27d814a728d21af;
 
 /***/ })
 
-},[[5,"static/runtime/webpack.js","styles"]]]));;
+},[[3,"static/runtime/webpack.js","styles"]]]));;
 //# sourceMappingURL=index.js.map

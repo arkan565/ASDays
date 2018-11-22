@@ -1,7 +1,7 @@
 @import './variables.scss'
 
 .dark{
-    background-color:$background-dark;
+    background:rgb(47, 52, 55) none repeat scroll 0% 0%;
     color:$mono-1;
 }
 .dark .success-background{

@@ -33,7 +33,13 @@ export default class ActivitiesGrid extends React.Component {
                 let style = {
                     "gridRowStart": offset-this.props.config.startTime.value,
                     "gridRowEnd": `span ${duration}`,
-                    "backgroundColor": "#DCEDC8"
+                    "backgroundColor": "#DCEDC8",
+                    "borderBottom":"2px",
+                    "borderTop":"0",
+                    "borderLeft":"0",
+                    "borderRight":"0",
+                    "borderStyle":"solid",
+                    "borderColor":"white"
                 };
                 if(activity.active){
                     style.backgroundColor = "#ffdd57";

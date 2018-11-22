@@ -18,6 +18,10 @@ export default class Index extends React.Component{
     constructor(props) {
         super(props)
         this.nextActivities=[];
+        this.state = {
+            width: 0,
+            height: 0
+        }
         this.active=[]
         this.day={
 
@@ -26,6 +30,14 @@ export default class Index extends React.Component{
 
         }
         this.timeout=null;
+    }
+    componentDidMount() {
+        window.addEventListener('resize', () => {
+            this.setState({
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+        });
     }
     orderActivities(day){
         let activities=[];
@@ -147,7 +159,9 @@ export default class Index extends React.Component{
                         <LeftPanel config={this.props.config} activities={this.props.day.activities?this.props.day.activities:""}></LeftPanel>
                     </div>
                     <div className = "column is-two-thirds">
-                        <ActiveActivities active={this.active} next={this.nextActivities}></ActiveActivities>
+                        <div style={this.state.width>800?{position:"fixed",width:"60vw"}:{}}>
+                            <ActiveActivities active={this.active} next={this.nextActivities}></ActiveActivities>
+                        </div>
                     </div>
                 </div>
             </div>

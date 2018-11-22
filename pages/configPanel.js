@@ -22,7 +22,7 @@ export default class Config extends React.Component {
         this.changeFinishHourValue = this.changeFinishHourValue.bind(this);
         this.save=this.save.bind(this);
     }
-    
+   
     changeStartHourValue(event){
         if(this.format=="24"){
            this.form.startTime.value=event.target.value;
