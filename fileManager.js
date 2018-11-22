@@ -43,12 +43,19 @@ var readExactDay = (date) =>{
         }
     }
 }
-var writeDay = (date,data)=>{
-    fs.writeFileSync(`${__dirname}/res/days/${date}.json`, JSON.stringify(data));
+var writeDay = (date,data) => {
+    fs.writeFileSync(`${__dirname}/res/config/config.json`, JSON.stringify(data));
 }
-
+var readConfig = () => {
+    return JSON.parse(fs.readFileSync(`${__dirname}/res/config/config.json`));
+}
+var writeConfig = (data)=> {
+     fs.writeFileSync(`${__dirname}/res/config/config.json`, JSON.stringify(data));
+}
 module.exports = {
     readDay,
     readExactDay,
-    writeDay
+    writeDay,
+    readConfig,
+    writeConfig
 }

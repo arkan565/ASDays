@@ -29,6 +29,23 @@ app.prepare()
             }
             
         });
+        server.get('/config', (req, res) => {
+            return res.send(JSON.stringify(fileManager.readConfig()));
+        });
+        server.post('/config', (req, res) => {
+            fileManager.writeConfig({
+                format:req.body.format,
+                startTime:req.body.startTime,
+                finishTime:req.body.finishTime
+            })
+            return res.send(JSON.stringify({
+                message: "config saved"
+            }));
+        });
+        server.post('/editor/:date',(req,res) =>{
+            fileManager.writeDay(req.body.date,{activities:req.body.activities})
+            res.send(JSON.stringify({message:"day saved"}));
+        })
         server.get('*', (req, res) => {
             return app.handleRequest(req, res)
         });

@@ -5,10 +5,14 @@ import ActiveActivities from '../components/activeActivities'
 import fetch from 'isomorphic-unfetch';
 export default class Index extends React.Component{
     static async getInitialProps() { //choose beetween production host or development host
-        let res = await fetch(`http://localhost:3000/day`);
-        const day = await res.json();
+        const res = await fetch(`http://localhost:3000/day`);
+        let day = await res.json();
+        const res2 = await fetch(`http://localhost:3000/config`);
+        const config = await res2.json();
+        day.activities= day.activities.filter(days=>days.startTime>`${config.startTime.value}:00`);
+        day.activities = day.activities.filter(days => days.startTime < `${config.finishTime.value}:00`);
         return {
-            day
+            day,config
         }
     }
     constructor(props) {
@@ -16,6 +20,9 @@ export default class Index extends React.Component{
         this.nextActivities=[];
         this.active=[]
         this.day={
+
+        }
+        this.config={
 
         }
         this.timeout=null;
@@ -137,7 +144,7 @@ export default class Index extends React.Component{
                 </div> 
                 <div className="columns">
                     <div className = "column is-one-third" >
-                        <LeftPanel activities={this.props.day.activities?this.props.day.activities:""}></LeftPanel>
+                        <LeftPanel config={this.props.config} activities={this.props.day.activities?this.props.day.activities:""}></LeftPanel>
                     </div>
                     <div className = "column is-two-thirds">
                         <ActiveActivities active={this.active} next={this.nextActivities}></ActiveActivities>
@@ -147,5 +154,3 @@ export default class Index extends React.Component{
         )
     }
 }
-//<LeftPanel activities={this.props.day.activities?this.props.day.activities:""}></LeftPanel>
-//                        <ActiveActivities active={this.active} next={this.nextActivities}></ActiveActivities>

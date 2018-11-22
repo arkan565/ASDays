@@ -6,6 +6,13 @@ import fetch from 'isomorphic-unfetch';
 
 const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 export default class Editor extends React.Component {
+    static async getInitialProps() { //choose beetween production host or development host
+        let res = await fetch(`http://localhost:3000/config`);
+        const config = await res.json();
+        return {
+            config
+        }
+    }
     constructor(props) {
         super(props);
         this.state = {date:""}
@@ -151,7 +158,7 @@ export default class Editor extends React.Component {
     render() {
         var switchRender = this.typeSwitch();
         return(
-            <div>
+            <div className="container">
                 <div style={{position:"absolute",right:"0",display:"inline-block",maxWidth:"50%"}}>
                    {this.message.map((message,index)=>{
                         return(

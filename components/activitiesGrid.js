@@ -5,9 +5,10 @@ export default class ActivitiesGrid extends React.Component {
          super(props);
          this.activitiesGridStyle = {
              "display": "grid",
-             "gridTemplateRows": "repeat(24,1fr)",
+              "gridTemplateRows": `repeat(${this.props.config.finishTime.value-this.props.config.startTime.value}, 1fr)`,
              "height":"100%",
-             "border":"solid 1px #DADADA"
+             "border":"solid 1px #DADADA",
+             
          }
      }
     renderActivities(){
@@ -30,7 +31,7 @@ export default class ActivitiesGrid extends React.Component {
                     duration =  (24- startHour)
                 }
                 let style = {
-                    "gridRowStart": offset,
+                    "gridRowStart": offset-this.props.config.startTime.value,
                     "gridRowEnd": `span ${duration}`,
                     "backgroundColor": "#DCEDC8"
                 };
@@ -38,10 +39,14 @@ export default class ActivitiesGrid extends React.Component {
                     style.backgroundColor = "#ffdd57";
                 }
                 
-                
-                return(
+                if(startHour<this.props.config.startTime.value){
+                    return (<div></div>)
+                }else{
+                     return(
                     <div key={index} style={style}>{`${activity.title} ${activity.startTime}-${activity.finishTime}`}</div>
-                )
+                    )
+                }
+               
             })
         }catch(ex){
             return "";

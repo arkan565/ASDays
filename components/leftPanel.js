@@ -10,10 +10,10 @@ export default class LeftPanel  extends React.Component {
         return (
             <div className="columns is-gapless is-mobile">
                 <div className="column is-one-fifth">
-                        <HoursPanel></HoursPanel>
+                        <HoursPanel config={this.props.config}></HoursPanel>
                 </div>
                 <div id="activities" className="column is-four-fifths">
-                            <ActivitiesGrid activities={this.props.activities?this.props.activities:""}></ActivitiesGrid>    
+                            <ActivitiesGrid config={this.props.config} activities={this.props.activities?this.props.activities:""}></ActivitiesGrid>    
                 </div>
                 
             </div>

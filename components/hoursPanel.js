@@ -1,12 +1,14 @@
 import React from 'react';
 var moment = require('moment');
+
 export default class HoursPanel extends React.Component{
     constructor(props) {
         super(props);
         this.hoursPanelStyle = {
             "display": "grid",
-            "gridTemplateRows": "repeat(24, 1fr)",
-            "height":"100%"
+            "gridTemplateRows": `repeat(${this.props.config.finishTime.value-this.props.config.startTime.value}, 1fr)`,
+            "height":"100%",
+            "minHeight":"85vh"
         }
         this.hourDivStyle ={
             border: "solid",
@@ -18,11 +20,15 @@ export default class HoursPanel extends React.Component{
     }
     renderHours(){
         let hours = []
-        for(var i=0;i<24;i++){
-            let date = new Date();
+        let date = new Date();
+        for(var i=this.props.config.startTime.value;i<this.props.config.finishTime.value;i++){
             date.setHours(Math.trunc(i));
             date.setMinutes(0);
-            hours.push(<div style={this.hourDivStyle} key={date}>{moment(date).format("HH:mm")}</div>)
+            if(this.props.config.format=="12"){
+                hours.push(<div style={this.hourDivStyle} key={date}>{moment(date).format("hh:mm A")}</div>)
+            }else{
+                hours.push(<div style={this.hourDivStyle} key={date}>{moment(date).format("HH:mm")}</div>)
+            }
         }    
         return hours;
     }
