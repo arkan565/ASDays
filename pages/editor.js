@@ -197,7 +197,7 @@ export default class Editor extends React.Component {
                         : 
                         <div style={{display:"inline-block"}}><input className="input" type="number" min="00" max="59" gap="1" name="finishMinute" value={splitFinishDate[1]}  onChange={(e)=>this.changeTime(index,e)}/></div><br/>
                         <br/>
-                        <button onClick={(index)=>{this.activities.splice(index,1);this.setState({date:new Date()})}} className="button is-danger">Delete</button>                        
+                        <button onClick={()=>{this.activities.splice(index,1);this.setState({date:new Date()})}} className="button is-danger">Delete</button>                        
                         </div>)
                     })}
                     {this.edit?<div><a className="button is-info" onClick={this.addActivity}>Add activity</a><a className="button is-success" onClick={this.save}>Save</a></div>:""}

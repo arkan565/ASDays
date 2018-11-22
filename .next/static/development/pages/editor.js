@@ -1293,7 +1293,7 @@ function (_React$Component) {
             return _this5.changeTime(index, e);
           }
         })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-          onClick: function onClick(index) {
+          onClick: function onClick() {
             _this5.activities.splice(index, 1);
 
             _this5.setState({
@@ -1338,7 +1338,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 6:
+/***/ 5:
 /*!*******************************!*\
   !*** multi ./pages/editor.js ***!
   \*******************************/
@@ -1363,5 +1363,5 @@ module.exports = dll_10edf27d814a728d21af;
 
 /***/ })
 
-},[[6,"static/runtime/webpack.js","styles"]]]));;
+},[[5,"static/runtime/webpack.js","styles"]]]));;
 //# sourceMappingURL=editor.js.map

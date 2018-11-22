@@ -20,7 +20,6 @@ app.prepare()
             }
         });
         server.get('/editor/:date',(req,res) =>{
-
             data = fileManager.readExactDay(req.params.date);
             if(data==null){
                 return res.send({activities:[]});
