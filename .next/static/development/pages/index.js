@@ -329,7 +329,7 @@ function (_React$Component) {
             style.backgroundColor = "#ffdd57";
           }
 
-          if (startHour < _this2.props.config.startTime.value) {
+          if (parseInt(startHour) < parseInt(_this2.props.config.startTime.value)) {
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
           } else {
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -424,7 +424,7 @@ function (_React$Component) {
       var hours = [];
       var date = new Date();
 
-      for (var i = this.props.config.startTime.value; i < this.props.config.finishTime.value; i++) {
+      for (var i = parseInt(this.props.config.startTime.value); parseInt(i) < parseInt(this.props.config.finishTime.value); i++) {
         date.setHours(Math.trunc(i));
         date.setMinutes(0);
 
@@ -64705,18 +64705,12 @@ function (_React$Component) {
 
               case 11:
                 config = _context.sent;
-                day.activities = day.activities.filter(function (days) {
-                  return days.startTime > "".concat(config.startTime.value, ":00");
-                });
-                day.activities = day.activities.filter(function (days) {
-                  return days.startTime < "".concat(config.finishTime.value, ":00");
-                });
                 return _context.abrupt("return", {
                   day: day,
                   config: config
                 });
 
-              case 15:
+              case 13:
               case "end":
                 return _context.stop();
             }

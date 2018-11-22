@@ -9,8 +9,8 @@ export default class Index extends React.Component{
         let day = await res.json();
         const res2 = await fetch(`http://localhost:3000/config`);
         const config = await res2.json();
-        day.activities= day.activities.filter(days=>days.startTime>`${config.startTime.value}:00`);
-        day.activities = day.activities.filter(days => days.startTime < `${config.finishTime.value}:00`);
+        //day.activities= day.activities.filter(days=>days.startTime>`${config.startTime.value}:00`);
+        //day.activities = day.activities.filter(days => days.startTime < `${config.finishTime.value}:00`);
         return {
             day,config
         }

@@ -44,7 +44,7 @@ var readExactDay = (date) =>{
     }
 }
 var writeDay = (date,data) => {
-    fs.writeFileSync(`${__dirname}/res/config/config.json`, JSON.stringify(data));
+    fs.writeFileSync(`${__dirname}/res/config/${date}.json`, JSON.stringify(data));
 }
 var readConfig = () => {
     return JSON.parse(fs.readFileSync(`${__dirname}/res/config/config.json`));

@@ -21,7 +21,7 @@ export default class HoursPanel extends React.Component{
     renderHours(){
         let hours = []
         let date = new Date();
-        for(var i=this.props.config.startTime.value;i<this.props.config.finishTime.value;i++){
+        for(var i=parseInt(this.props.config.startTime.value);parseInt(i)<parseInt(this.props.config.finishTime.value);i++){
             date.setHours(Math.trunc(i));
             date.setMinutes(0);
             if(this.props.config.format=="12"){
@@ -29,6 +29,7 @@ export default class HoursPanel extends React.Component{
             }else{
                 hours.push(<div style={this.hourDivStyle} key={date}>{moment(date).format("HH:mm")}</div>)
             }
+
         }    
         return hours;
     }

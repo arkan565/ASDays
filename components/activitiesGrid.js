@@ -45,7 +45,7 @@ export default class ActivitiesGrid extends React.Component {
                     style.backgroundColor = "#ffdd57";
                 }
                 
-                if(startHour<this.props.config.startTime.value){
+                if(parseInt(startHour)<parseInt(this.props.config.startTime.value)){
                     return (<div></div>)
                 }else{
                      return(
