@@ -28,10 +28,9 @@ export default class Editor extends React.Component {
         this.changeTitle=this.changeTitle.bind(this);
         this.save=this.save.bind(this);
         this.calendars = null;
+        this.auxActivity=[];
     }
-    componentDidMount(){
-        this.calendars = bulmaCalendar.attach('[type="date"]');
-    }
+    
     typeSwitch(){
         switch(this.type){
             case "weekDay":

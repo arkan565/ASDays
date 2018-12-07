@@ -375,7 +375,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ActivitiesGrid).call(this, props));
     _this.activitiesGridStyle = {
       "display": "grid",
-      "gridTemplateRows": "repeat(".concat(_this.props.config.finishTime.value - _this.props.config.startTime.value, ", 1fr)"),
+      "gridTemplateRows": "repeat(".concat(4 * (_this.props.config.finishTime.value - _this.props.config.startTime.value), ", 1fr)"),
       "height": "100%",
       "border": "solid 1px #DADADA"
     };
@@ -396,8 +396,8 @@ function (_React$Component) {
           var splitFinishDate = activity.finishTime.split(':');
           var finishHour = parseInt(splitFinishDate[0], 10);
           var finishMinute = parseInt(splitFinishDate[1], 10);
-          var offset = 1 + startHour;
-          var duration = finishHour - startHour;
+          var offset = 1 + startHour * 4 + Math.trunc(startMinute / 15);
+          var duration = 4 * (finishHour - startHour) + Math.ceil((finishMinute - startMinute) / 15);
 
           if (finishMinute > 0) {
             duration = duration + 1;
@@ -408,7 +408,7 @@ function (_React$Component) {
           }
 
           var style = {
-            "gridRowStart": offset - _this2.props.config.startTime.value,
+            "gridRowStart": offset - _this2.props.config.startTime.value * 4,
             "gridRowEnd": "span ".concat(duration),
             "backgroundColor": "#DCEDC8",
             "borderBottom": "2px",

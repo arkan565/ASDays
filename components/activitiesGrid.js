@@ -5,7 +5,7 @@ export default class ActivitiesGrid extends React.Component {
          super(props);
          this.activitiesGridStyle = {
              "display": "grid",
-              "gridTemplateRows": `repeat(${this.props.config.finishTime.value-this.props.config.startTime.value}, 1fr)`,
+              "gridTemplateRows": `repeat(${4*(this.props.config.finishTime.value-this.props.config.startTime.value)}, 1fr)`,
              "height":"100%",
              "border":"solid 1px #DADADA",
              
@@ -21,8 +21,8 @@ export default class ActivitiesGrid extends React.Component {
                 let splitFinishDate=activity.finishTime.split(':');
                 let finishHour = parseInt(splitFinishDate[0], 10);
                 let finishMinute = parseInt(splitFinishDate[1], 10);
-                let offset=1+startHour;
-                let duration = (finishHour-startHour);
+                let offset=1+((startHour)*4)+(Math.trunc((startMinute)/15));
+                let duration = 4*(finishHour-startHour)+(Math.ceil((finishMinute-startMinute)/15));
 
                 if(finishMinute>0){
                     duration=duration+1;
@@ -31,7 +31,7 @@ export default class ActivitiesGrid extends React.Component {
                     duration =  (24- startHour)
                 }
                 let style = {
-                    "gridRowStart": offset-this.props.config.startTime.value,
+                    "gridRowStart": offset-(this.props.config.startTime.value*4),
                     "gridRowEnd": `span ${duration}`,
                     "backgroundColor": "#DCEDC8",
                     "borderBottom":"2px",
@@ -48,8 +48,8 @@ export default class ActivitiesGrid extends React.Component {
                 if(parseInt(startHour)<parseInt(this.props.config.startTime.value)){
                     return (<div></div>)
                 }else{
-                     return(
-                    <div key={index} style={style}>{`${activity.title} ${activity.startTime}-${activity.finishTime}`}</div>
+                    return(
+                        <div key={index} style={style}>{`${activity.title} ${activity.startTime}-${activity.finishTime}`}</div>
                     )
                 }
                
