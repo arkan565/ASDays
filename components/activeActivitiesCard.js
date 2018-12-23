@@ -9,6 +9,8 @@ import {
 export default class ActiveActivitiesCard extends React.Component {
     constructor(props){
         super(props);
+        console.log(this.props.config);
+        this.renderChart = this.renderChart.bind(this);
     }
     componentDidMount(){
         this.interval = setInterval(() => this.setState({
@@ -25,10 +27,14 @@ export default class ActiveActivitiesCard extends React.Component {
             let finishMinutes = parseInt(finishHourSplit[1]);
             let duration = (finishHour - startHour) * 3600+(finishMinutes-startMinutes)*60;
             let date = new Date();
+            let active = 'rgb(255, 221, 87)';
+            if(this.props.config && this.props.config.layout && this.props.config.layout.active){
+                active = this.props.config.layout.active;
+            }
             let data = [{
                     name: 'Passed time',
                     value: (date.getHours()-startHour) * 3600 +(date.getMinutes()-startMinutes)*60+date.getSeconds() ,
-                    fill: 'rgb(255, 221, 87)'
+                    fill: active
                 },
                 {
                     name: 'Remaining time',
@@ -65,6 +71,10 @@ export default class ActiveActivitiesCard extends React.Component {
             borderRadius:"1%",
             minWidth:"0"
         }
+        let active = 'rgb(255, 221, 87)';
+        if(this.props.config && this.props.config.layout && this.props.config.layout.active){
+            active = this.props.config.layout.active;
+        }
         let cardStyleActive = {
             maxHeight: "86vh",
             height: "100%",
@@ -72,11 +82,16 @@ export default class ActiveActivitiesCard extends React.Component {
                 width: "100%",
                 borderRadius: "1%",
                 boxShadow: "",
-                border: "solid rgb(255, 221, 87)",
+                border: `solid ${active}`,
                 boxShadow: "none",
         }
+        let title  = "#363636";
+        if(this.props.config.layout && this.props.config.layout.title){
+            title = this.props.config.layout.title
+        }
         let textStyle = {
-            justifyContent:"center"
+            justifyContent:"center",
+            color:title
         }
         let content ={
             width:"100%",

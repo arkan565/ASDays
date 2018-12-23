@@ -17,6 +17,9 @@ export default class HoursPanel extends React.Component{
             textAlign: "center"
 
         }
+        if(this.props.config.layout && this.props.config.layout.tableBorder){
+            this.hourDivStyle.borderColor = this.props.config.layout.tableBorder;
+        }
     }
     renderHours(){
         let hours = []

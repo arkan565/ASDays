@@ -10,12 +10,12 @@ export default class ActiveActivities extends React.Component{
             <div>
                 <div className="columns">        
                     {this.props.active.map((activeActivity,index)=>{
-                        return <ActiveActivitiesCard key={index} activity={activeActivity}/>
+                        return <ActiveActivitiesCard config={this.props.config} key={index} activity={activeActivity}/>
                     })}               
                 </div>
                 <div className="columns">
                     {this.props.next.map((activeActivity,index)=>{
-                        return <ActiveActivitiesCard key={index} activity={activeActivity}/>
+                        return <ActiveActivitiesCard config={this.props.config} key={index} activity={activeActivity}/>
                     })}
                 </div>
             </div>

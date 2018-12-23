@@ -35,7 +35,8 @@ app.prepare()
             fileManager.writeConfig({
                 format:req.body.format,
                 startTime:req.body.startTime,
-                finishTime:req.body.finishTime
+                finishTime:req.body.finishTime,
+                layout:req.body.layout
             })
             return res.send(JSON.stringify({
                 message: "config saved"

@@ -2,6 +2,7 @@ import React from 'react';
 'next/link'
 import 'bulma/css/bulma.css';
 import fetch from 'isomorphic-unfetch';
+import ColorPicker from '../components/ColorPicker';
 export default class Config extends React.Component {
     static async getInitialProps() { //choose beetween production host or development host
         let res = await fetch(`http://localhost:3000/config`);
@@ -12,15 +13,27 @@ export default class Config extends React.Component {
     }
     constructor(props) {
         super(props);
-        this.format=this.props.config.format;
-        this.form={
+        this.format = this.props.config.format;
+        this.form = {
             startTime:this.props.config.startTime,
             finishTime:this.props.config.finishTime
         }
-        this.message=[];
+        this.layout = this.props.config.layout;
+        if(!this.layout){
+            this.layout = {
+                
+            }
+        }
+        this.message = [];  
         this.changeStartHourValue = this.changeStartHourValue.bind(this);
         this.changeFinishHourValue = this.changeFinishHourValue.bind(this);
-        this.save=this.save.bind(this);
+        this.save = this.save.bind(this);
+        this.changeBackground = this.changeBackground.bind(this);
+        this.changeText = this.changeText.bind(this);
+        this.changeTableBorder = this.changeTableBorder.bind(this);
+        this.changeActivity = this.changeActivity.bind(this);
+        this.changeActiveActivity = this.changeActiveActivity.bind(this);
+        this.changeTitles=this.changeTitles.bind(this);
     }
    
     changeStartHourValue(event){
@@ -105,7 +118,8 @@ export default class Config extends React.Component {
              body: JSON.stringify({
                 format: this.format,
                 startTime:this.form.startTime,
-                finishTime:this.form.finishTime                
+                finishTime:this.form.finishTime,
+                layout:this.layout            
              })
          }).then(res => {
              res.json().then(
@@ -148,9 +162,39 @@ export default class Config extends React.Component {
             )
         }
     }
+    changeBackground(color,event){
+        this.layout.background = color.hex;
+    }
+    changeText(color,event){
+        this.layout.text = color.hex;
+    }
+    changeTableBorder(color,event){
+        this.layout.tableBorder = color.hex;
+    }
+    changeActivity(color,event){
+        this.layout.activity = color.hex;
+    }
+    changeActiveActivity(color,event){
+        this.layout.activeActivity = color.hex;
+    }
+    changeTitles(color,event){
+        this.layout.title = color.hex;
+    }
+    default(){
+        this.layout.background = "#fff";
+        this.layout.text = "#4a4a4a";
+        this.layout.tableBorder = "#DADADA";
+        this.layout.activity = "#DCEDC8";
+        this.layout.active = "#ffdd57";
+        this.layout.title = "#363636";
+        this.setState({
+            date: new Date()
+        })
+    }
     render() {
         return(
             <div className="container">
+                <title>Config Panel</title>
                 <div style={{position:"absolute",right:"0",display:"inline-block",maxWidth:"50%"}}>
                    {this.message.map((message,index)=>{
                         return(
@@ -170,7 +214,18 @@ export default class Config extends React.Component {
                 <br/>
                 {this.renderStartForm()}<br/>
                 {this.renderFinishForm()}<br/><br/>
+                <div className="columns">
+                    <ColorPicker className="column" title={"Background"} color={this.layout.background?this.layout.background:"#fff"} handleChange={this.changeBackground} />
+                    <ColorPicker className="column" title={"Text Color"} color={this.layout.text?this.layout.text:"#4a4a4a"} handleChange={this.changeText} />
+                    <ColorPicker className="column" title={"Titles"} color={this.layout.title?this.layout.title:"#363636"} handleChange={this.changeTitles} />                   
+                    <ColorPicker className="column" title={"Table Border"} color={this.layout.tableBorder?this.layout.tableBorder:"#DADADA"} handleChange={this.changeTableBorder} />
+                    <ColorPicker className="column" title={"Activity Color"} color={this.layout.activity?this.layout.activity:"#DCEDC8"} handleChange={this.changeActivity} />
+                    <ColorPicker className="column" title={"Activity Active Color"} color={this.layout.active?this.layout.active:"#ffdd57"} handleChange={this.changeActiveActivity} />
+                </div>
+                <a className="button" onClick={this.default.bind(this)}>Default Colors</a><br/><br/>
                 <a className="button is-success" onClick={this.save}>Save</a>
+                <br/>
+                <br/>
             </div>
 
         )

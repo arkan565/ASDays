@@ -2,14 +2,18 @@ import React from 'react';
 
 export default class ActivitiesGrid extends React.Component {
      constructor(props) {
-         super(props);
-         this.activitiesGridStyle = {
-             "display": "grid",
-              "gridTemplateRows": `repeat(${4*(this.props.config.finishTime.value-this.props.config.startTime.value)}, 1fr)`,
-             "height":"100%",
-             "border":"solid 1px #DADADA",
-             
-         }
+        super(props);
+        this.activitiesGridStyle = {
+            "display": "grid",
+            "gridTemplateRows": `repeat(${4*(this.props.config.finishTime.value-this.props.config.startTime.value)}, 1fr)`,
+            "height":"100%",
+            "border":"solid 1px",
+            "borderColor":"#DADADA"
+        }
+
+        if(this.props.config.layout && this.props.config.layout.tableBorder){
+            this.activitiesGridStyle.borderColor = this.props.config.layout.tableBorder;
+        }
      }
     renderActivities(){
         try{
@@ -41,8 +45,14 @@ export default class ActivitiesGrid extends React.Component {
                     "borderStyle":"solid",
                     "borderColor":"white"
                 };
+                if(this.props.config.layout && this.props.config.layout.activity){
+                    style.backgroundColor = this.props.config.layout.activity;
+                }
                 if(activity.active){
                     style.backgroundColor = "#ffdd57";
+                    if(this.props.config.layout && this.props.config.layout.active){
+                        style.backgroundColor = this.props.config.layout.active;
+                    }
                 }
                 
                 if(parseInt(startHour)<parseInt(this.props.config.startTime.value)){

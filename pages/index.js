@@ -149,10 +149,35 @@ export default class Index extends React.Component{
         this.setActive();
         this.getNext(this.props.day.activities);
         this.setTimeout();
+        
+        if(this.props.config.layout && this.props.config.layout.background){
+            this.background = this.props.config.layout.background;
+        }else{
+            this.background = "";
+        }
+        if(this.props.config.layout && this.props.config.layout.text){
+            this.color = this.props.config.layout.text;
+        }else{
+            this.color = "#4a4a4a";
+        }
+        if(this.props.config.layout && this.props.config.layout.title){
+            this.title = this.props.config.layout.title
+        }else{
+            this.title = "#363636";
+        }
         return(
             <div className="container">
+                <style jsx global>
+                {`
+                    body { 
+                        background: ${this.background};
+                        color: ${this.color};
+                    };
+                `}
+                </style>
+                <title>Day Panel</title>
                 <div style={{marginBottom:"5vh",textAlign:"center"}}>
-                    <h1 className="title is-1">Schedule</h1>
+                    <h1 className="title is-1" style = {{color:this.title}}>Schedule</h1>
                 </div> 
                 <div className="columns">
                     <div className = "column is-one-third" >
@@ -160,7 +185,7 @@ export default class Index extends React.Component{
                     </div>
                     <div className = "column is-two-thirds">
                         <div style={this.state.width>800?{position:"fixed",width:"60vw"}:{}}>
-                            <ActiveActivities active={this.active} next={this.nextActivities}></ActiveActivities>
+                            <ActiveActivities config={this.props.config} active={this.active} next={this.nextActivities}></ActiveActivities>
                         </div>
                     </div>
                 </div>

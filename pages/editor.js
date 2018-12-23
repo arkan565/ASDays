@@ -158,6 +158,7 @@ export default class Editor extends React.Component {
         var switchRender = this.typeSwitch();
         return(
             <div className="container">
+                <title>Editor</title>
                 <div style={{position:"absolute",right:"0",display:"inline-block",maxWidth:"50%"}}>
                    {this.message.map((message,index)=>{
                         return(
