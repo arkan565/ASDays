@@ -175,7 +175,7 @@ export default class Config extends React.Component {
         this.layout.activity = color.hex;
     }
     changeActiveActivity(color,event){
-        this.layout.activeActivity = color.hex;
+        this.layout.active = color.hex;
     }
     changeTitles(color,event){
         this.layout.title = color.hex;
